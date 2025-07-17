@@ -15,7 +15,7 @@ module Services
     def run
       @errors = validate_params
 
-      return puts JSON.pretty_generate({ error: @errors }) unless @errors.empty?
+      return { error: @errors } unless @errors.empty?
 
       process
     end
@@ -23,6 +23,9 @@ module Services
     private
 
     def validate_params
+      return [ 'Missing query option.' ] if @options[:query].nil?
+      return [ 'No client data loaded.' ] if @clients_data.empty?
+
       parse_query_and_normalize
 
       @errors = SearchClientsValidations::ParamValidation.new(
@@ -36,6 +39,10 @@ module Services
     end
 
     def validate_resources
+      unless @clients_data.first&.key?(@key)
+        return [ 'Invalid search query key.' ]
+      end
+
       SearchClientsValidations::ResourceValidator.new(
         client['data']
       ).run
@@ -52,12 +59,12 @@ module Services
 
     def client
       {
-        'data' => @clients_data.select { |client| client[@key] == @search_value }
+        'data' => @clients_data.select { |client| client[@key].to_s == @search_value.to_s }
       }
     end
 
     def output_results(results)
-      puts JSON.pretty_generate(results)
+      results
     end
   end
 end
