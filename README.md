@@ -50,9 +50,30 @@ ruby bin/app.rb <input-file> <options>
 ```
 
 - `input-file` - File to be accepted by the app for parsing and searching.
-- `options` - Parameters to be used for commands like `--search 'id=3'` or `--findSimilarEmails`.
+- `options` - Parameters to be used for commands like `[--search 'key=value']` or `[--findSimilarEmails]`.
 
 ## Automated testing
+
+Used Rake for running the automation testing.
+
+List of tasks:
+
+- `[all]`
+- `[search_by_id]`
+- `[search_by_name]`
+- `[search_by_email]`
+- `[search_by_invalid_id]`
+- `[search_by_non_existent_client_by_param]`
+- `[search_by_invalid_email]`
+- `[find_similar_emails]`
+- `[found_no_similar_emails]`
+- `[input_file_error]`
+
+Using the command below we can run the testing.
+
+```bash
+rake run_cli_tasks:<task>
+```
 
 ## Assumptions and decisions
 
