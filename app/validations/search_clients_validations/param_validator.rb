@@ -1,13 +1,9 @@
 require_relative '../../../lib/parse_query'
 require_relative '../../../lib/normalize_values'
+require_relative '../base_param_validator'
 
 module SearchClientsValidations
-  class ParamValidation
-    def initialize(key, value)
-      @key = key
-      @value = value
-    end
-
+  class ParamValidation < Validations::BaseParamValidator
     def validate
       errors = []
 
