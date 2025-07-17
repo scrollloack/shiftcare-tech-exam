@@ -6,6 +6,7 @@ Given a JSON dataset with clients (attached), the application will need to offer
 - Find out if there are any clients with the same email in the dataset, and show those duplicates if any are found.
 
 ## Table of contents
+
 - [shiftcare-tech-exam](#shiftcare-tech-exam)
   - [Setup](#setup)
     - [With Dev Containers](#with-dev-containers)
@@ -24,20 +25,21 @@ Given a JSON dataset with clients (attached), the application will need to offer
 ### With Dev Containers
 
 Run using Dev Containers would the following pre-requisites:
+
 - vscode.
 - Dev Containers extension on vscode.
 - Docker or Docker Desktop(depends on your system).
 - For a first time build open the repo with vscode then run the vscode's command palette and run `Dev Containers: Rebuild and Reopen Container.
-- Then it's ready for [use](#Usage).
-The advantage of using this setup would be the absence of installing ruby versions.
+- Then it's ready for [use](#Usage). The advantage of using this setup would be the absence of installing ruby versions.
 
 ### With Ruby only (latest version preferably)
+
 Run using the installed ruby on system with the following pre-requisites
+
 - Ruby version manager.
 - Ruby version 3+ but 3.4.4 is preferred.
 - Install the gems from the Gemfile.
-- Then it's ready for [use](#Usage).
-The advantage of using this setup is the absence of setting up Docker, and vscode.
+- Then it's ready for [use](#Usage). The advantage of using this setup is the absence of setting up Docker, and vscode.
 
 ## Usage
 
@@ -63,9 +65,12 @@ ruby bin/app.rb <input-file> <options>
 
 - I decided to separate the cli runner in preparation for REST API routes via sinatra preferably since this is not made via rails.
 - I made the cli options or params easily pluggable so I can just add new options in the future. Each option handles its own logic and can be tested independently.
+- I made the validations not separated as time is short.
 
 ## Known limitations and areas for future improvement
 
 ### Limitations
+
+- No validation for invalid fields, like when search for field that does not exists in the input dataset
 
 ### Areas for future improvement

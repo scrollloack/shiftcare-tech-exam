@@ -1,5 +1,5 @@
 require_relative '../lib/cli/main_option_parser'
-require_relative '../services/search_client_service'
+require_relative '../app/services/search_client_service'
 
 options = CLI::MainOptionParser.new(ARGV).parse!
 
