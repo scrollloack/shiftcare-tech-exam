@@ -98,3 +98,5 @@ rake run_cli_tasks:<task>
 - Needs to add unit tests specially when the app is scaled to make sure nothing in the code is broken.
 - Non-deep or non-critical validations are return early and in the service instead of the validators.
 - Needs some code changes for database integration for when the app is scaled so we can optimize how we extract, load and transform the data.
+- Does not handle nested JSON input file and input files with array-of-arrays or nested arrays.
+- Key validation only checks from the first record schema.
