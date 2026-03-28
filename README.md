@@ -58,21 +58,21 @@ Used Rake for running the automation testing.
 
 List of tasks:
 
-- `[all]`
-- `[search_by_id]`
-- `[search_by_name]`
-- `[search_by_email]`
-- `[invalid_search_key]`
-- `[search_by_invalid_id]`
-- `[search_by_non_existent_client_by_param]`
-- `[search_by_invalid_email]`
-- `[find_similar_emails]`
-- `[skip_client_no_email]`
-- `[found_no_similar_emails]`
-- `[missing_query_error]`
-- `[empty_input_data_error_search_query]`
-- `[empty_input_data_error_find_similar_emails]`
-- `[input_file_error]`
+- `[all]` - run all the rake tasks.
+- `[search_by_id]` - runs the tasks by searching `[--search 'id=1']`.
+- `[search_by_name]` - runs the tasks by searching `[--search 'full_named=John Doe']`.
+- `[search_by_email]` - runs the tasks by searching `[--search 'email=william.davis@icloud.com']`.
+- `[invalid_search_key]` - runs the tasks by searching with invalid key `[--search 'url=http://youtube.com']`.
+- `[search_by_invalid_id]` - runs the tasks by searching with invalid id `[--search 'id=-1']`.
+- `[search_by_non_existent_client_by_param]` - runs the tasks by searching with non-existent client `[--search 'id=10000']`.
+- `[search_by_invalid_email]` - runs the tasks by searching with invalid email `[--search 'email=davis.com']`.
+- `[find_similar_emails]` - runs the tasks by finding `[--findSimilarEmails]`.
+- `[skip_client_no_email]` - runs the tasks by searching and skips client with no email `[--findSimilarEmails]`.
+- `[found_no_similar_emails]` - runs the tasks by searching with no similar emails `[--findSimilarEmails]`.
+- `[missing_query_error]` - runs the tasks with empty queries `[ ]`.
+- `[empty_input_data_error_search_query]` - runs the tasks by searching when input data is empty `[--search 'full_named=John Doe']`.
+- `[empty_input_data_error_find_similar_emails]` - runs the tasks by finding when input data is empty `[--findSimilarEmails]`.
+- `[input_file_error]` - runs the tasks by not putting existing input file dataset.
 
 Using the command below we can run the testing.
 
