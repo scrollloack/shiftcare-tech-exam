@@ -62,11 +62,16 @@ List of tasks:
 - `[search_by_id]`
 - `[search_by_name]`
 - `[search_by_email]`
+- `[invalid_search_key]`
 - `[search_by_invalid_id]`
 - `[search_by_non_existent_client_by_param]`
 - `[search_by_invalid_email]`
 - `[find_similar_emails]`
+- `[skip_client_no_email]`
 - `[found_no_similar_emails]`
+- `[missing_query_error]`
+- `[empty_input_data_error_search_query]`
+- `[empty_input_data_error_find_similar_emails]`
 - `[input_file_error]`
 
 Using the command below we can run the testing.
@@ -86,12 +91,10 @@ rake run_cli_tasks:<task>
 
 - I decided to separate the cli runner in preparation for REST API routes via sinatra preferably since this is not made via rails.
 - I made the cli options or params easily pluggable so I can just add new options in the future. Each option handles its own logic and can be tested independently.
-- I made the validations not separated as time is short.
+- Separated some validations to different classes or modules.
 
 ## Known limitations and areas for future improvement
 
-### Limitations
-
-- No validation for invalid fields, like when search for field that does not exists in the input dataset
-
-### Areas for future improvement
+- Needs to add unit tests specially when the app is scaled to make sure nothing in the code is broken.
+- Non-deep or non-critical validations are return early and in the service instead of the validators.
+- Needs some code changes for database integration for when the app is scaled so we can optimize how we extract, load and transform the data.

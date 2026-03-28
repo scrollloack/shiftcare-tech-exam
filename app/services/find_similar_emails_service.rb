@@ -1,5 +1,3 @@
-require 'json'
-
 require_relative '../validations/find_similar_email_validations/resource_validator'
 
 module Services
@@ -11,7 +9,7 @@ module Services
     def run
       @errors = validate_resources
 
-      return puts JSON.pretty_generate({ error: @errors }) unless @errors.empty?
+      return { error: @errors } unless @errors.empty?
 
       process
     end
@@ -19,6 +17,8 @@ module Services
     private
 
     def validate_resources
+      return [ 'No client data loaded.' ] if @clients_data.empty?
+
       FindSimilarEmailsValidations::ResourceValidator.new(
         clients
       ).run
@@ -33,15 +33,15 @@ module Services
     end
 
     def find_duplicates
-      grouped = @clients_data.group_by { |client| client['email'] }
+      grouped = @clients_data
+                .select { |client| client['email'].to_s.strip != '' }
+                .group_by { |client| client['email'].to_s.strip.downcase }
 
       grouped.select { |_email, clients| clients.size > 1 }
-             .values
-             .flatten
     end
 
     def output_results(results)
-      puts JSON.pretty_generate({ 'data' => results })
+      { 'data' => results }
     end
   end
 end

@@ -29,4 +29,4 @@ else
   Services::SearchClientService.new(json_data, options)
 end
 
-result.run
+puts JSON.pretty_generate(result.run)

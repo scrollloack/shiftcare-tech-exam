@@ -3,7 +3,7 @@ module Validations
     def initialize(data)
       @data = data
     end
-    
+
     def run
       raise NotImplementedError
     end
