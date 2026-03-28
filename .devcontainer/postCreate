@@ -17,11 +17,4 @@ else
   echo "No Gemfile found, skipping dependencies installation."
 fi
 
-if [ -d "spec" ]; then
-  echo "Rspec helpers already installed..."
-else
-  echo "Installing Rspec helpers..."
-  bin/rails generate rspec:install
-fi
-
 echo "Done!"
